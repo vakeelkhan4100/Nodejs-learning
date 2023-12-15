@@ -1,0 +1,9 @@
+{
+    "username":"nadim",
+    "email":"nadim@gmail.com",
+    "age":12345,
+    "mobile":8003509968,
+    "password":"$2b$10$s25hzhIiQpFbIkeYG1MsUeelslhH.osmTUOZRb9iykm4kLYGCQfSu",
+    "pan_no":"FROPM3596K",
+    "adhaar_no":7328942374,
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiV2VkIFNlcCAyOCAyMDIyIDA4OjU1OjI0IEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsInVzZXJJZCI6MTEsImlhdCI6MTY2NDMzNTUyNH0.lzFUZj38R8v8N7FbbC8eadVEt97MOeFsuBfRbdeH7aA"}

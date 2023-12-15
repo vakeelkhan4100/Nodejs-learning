@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style><script src=
+"https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
+  window.onload=function(){
+
+ var socket = io();
+
+var messages = document.getElementById('messages');
+console.log("messages---",messages);
+var form = document.getElementById('form');
+var input = document.getElementById('input');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (input.value) {
+    console.log("Input value -------",input.value);
+    socket.emit('chat message', input.value);
+    input.value = '';
+  }else{
+    alert("please fill something in input.");
+  }
+});
+
+socket.on('chat message', function(msg) {
+  console.log("liiiii -------",msg);
+  var item = document.createElement('li');
+  item.textContent = msg;
+  messages.appendChild(item);
+  window.scrollTo(0, document.body.scrollHeight);
+});
+  }
+  </script>
+</head>
+<body>
+  <ul id="messages"></ul>
+  <form id="form" action="/home/a/aarif?">
+    <input id="input" autocomplete="off" /><button>Send</button>
+  </form>
+<h2>Your are talking to <%= user %> in this room: <%= room %></h2>
+
+<div class="container">
+    <img src="https://img.freepik.com/free-photo/business-concept-portrait-confident-young-businesswoman-keeping-arms-crossed-looking-camera-w_1258-104422.jpg" alt="Avatar" style="width:100%;">
+
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+
+<div class="container darker">
+    <img src="https://t4.ftcdn.net/jpg/02/41/80/03/360_F_241800366_vOVZNPPuPvDVmtG1yZgNW7D5er0KFaJ0.jpg" alt="Avatar" class="right" style="width:100%;">
+
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container">
+  <img src="https://img.freepik.com/free-photo/business-concept-portrait-confident-young-businesswoman-keeping-arms-crossed-looking-camera-w_1258-104422.jpg" alt="Avatar" style="width:100%;">
+  <p>Sweet! So, what do you wanna do today?</p>
+  <span class="time-right">11:02</span>
+</div>
+
+<div class="container darker">
+  <img src="https://t4.ftcdn.net/jpg/02/41/80/03/360_F_241800366_vOVZNPPuPvDVmtG1yZgNW7D5er0KFaJ0.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+  <span class="time-left">11:05</span>
+</div>
+
+<!-- <form action="/action_page.php">
+    <input type="text" id="message" name="message" style="width:87%;padding: 50px;"><br><br>
+    <input type="submit" value="Submit" style="color: white;
+    background-color: green;
+    border: none;
+    padding: 10px 22px 10px 22px;
+    border-radius: 3px;">
+  </form> -->
+</body>
+</html>
